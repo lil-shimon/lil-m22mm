@@ -1,7 +1,11 @@
 import ccxt
 from pprint import pprint
+from settings import API_KEY, API_SECRET
 
-bitflyer = ccxt.bitflyer()
+bitflyer = ccxt.bitflyer({
+  "api_key": API_KEY,
+  "secret": API_SECRET
+})
 
 symbol = "BTC/JPY"
 
