@@ -136,8 +136,23 @@ def fetch_candles(timeframe='1m', symbol='BTC/JPY'):
   candles = bitflyer.fetch_ohlcv(symbol, timeframe, since=None, limit=None, params={})
   pprint(candles)
 
+
+# ---------------------------------------------
+# 口座残高の取得
+# {'BAT': {'free': 9.67671646, 'total': 9.67671646, 'used': 0.0},
+#  'BCH': {'free': 0.0, 'total': 0.0, 'used': 0.0},
+#  'BTC': {'free': 0.0, 'total': 0.0, 'used': 0.0},
+#  'DOT': {'free': 0.0, 'total': 0.0, 'used': 0.0},
+#  'ETC': {'free': 0.0, 'total': 0.0, 'used': 0.0},
+#  'ETH': {'free': 0.0, 'total': 0.0, 'used': 0.0},
+#  'FLR': {'free': 0.0, 'total': 0.0, 'used': 0.0},
+def fetch_account_balance():
+  balance = bitflyer.fetch_balance()
+  pprint(balance)
+
 if __name__ == "__main__":
   # get_market()
   # fetch_ticker(symbol)
   # fetch_order_book(symbol)
-  fetch_candles()
+  # fetch_candles()
+  fetch_account_balance()
