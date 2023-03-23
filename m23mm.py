@@ -7,6 +7,7 @@ bitflyer = ccxt.bitflyer({
   "secret": API_SECRET
 })
 
+# 通貨
 symbol = "BTC/JPY"
 
 def get_market():
@@ -146,9 +147,20 @@ def fetch_candles(timeframe='1m', symbol='BTC/JPY'):
 #  'ETC': {'free': 0.0, 'total': 0.0, 'used': 0.0},
 #  'ETH': {'free': 0.0, 'total': 0.0, 'used': 0.0},
 #  'FLR': {'free': 0.0, 'total': 0.0, 'used': 0.0},
+#  ....
 def fetch_account_balance():
   balance = bitflyer.fetch_balance()
   pprint(balance)
+
+def create_order(price, side, amount, symbol="BTC/JPY"):
+  order = bitflyer.create_order(
+    symbol,
+    type='limit',
+    price=price,
+    side=side,
+    amount=amount,
+  )
+  pprint(order)
 
 if __name__ == "__main__":
   # get_market()
@@ -156,3 +168,4 @@ if __name__ == "__main__":
   # fetch_order_book(symbol)
   # fetch_candles()
   fetch_account_balance()
+  # create_order(price=4000000, side="buy", amount=0.001)
